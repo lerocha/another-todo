@@ -6,7 +6,7 @@ namespace AnotherTodo
 	/// Model for a Tasklist resource.
 	/// https://developers.google.com/google-apps/tasks/v1/reference/tasklists
 	/// </summary>
-	public class TaskList
+	public class TodoList
 	{
 		/// <summary>
 		/// Type of the resource. This is always "tasks#taskList".

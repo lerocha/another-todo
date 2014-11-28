@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace AnotherTodo
 {
-	public class CollectionResponse<T> where T : new()
+	public class BaseCollection<T> where T : new()
 	{
 		/// <summary>
 		/// Type of the resource. This is always "tasks#taskLists".

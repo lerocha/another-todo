@@ -2,7 +2,7 @@
 
 namespace AnotherTodo
 {
-	public class TaskLink
+	public class TodoLink
 	{
 		/// <summary>
 		/// Type of the link, e.g. "email".

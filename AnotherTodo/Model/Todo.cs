@@ -7,7 +7,7 @@ namespace AnotherTodo
 	/// Model for Task resource.
 	/// https://developers.google.com/google-apps/tasks/v1/reference/tasks
 	/// </summary>
-	public class Task
+	public class Todo
 	{
 		/// <summary>
 		/// Type of the resource. This is always "tasks#task".
@@ -102,7 +102,7 @@ namespace AnotherTodo
 		/// Collection of links. This collection is read-only.	
 		/// </summary>
 		/// <value>The links.</value>
-		public List<TaskLink> Links { get; set; }
+		public List<TodoLink> Links { get; set; }
 	}
 }
 
