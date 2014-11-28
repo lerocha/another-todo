@@ -103,6 +103,12 @@ namespace AnotherTodo
 		/// </summary>
 		/// <value>The links.</value>
 		public List<TodoLink> Links { get; set; }
+
+		/// <summary>
+		/// The identifier of the Task list that this task belongs to.
+		/// </summary>
+		/// <value>The task list identifier.</value>
+		public string TodoListId { get; set; }
 	}
 }
 
