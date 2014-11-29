@@ -32,17 +32,17 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Model\BaseCollection.cs" />
-    <Compile Include="Model\Todo.cs" />
-    <Compile Include="Model\TodoCollection.cs" />
-    <Compile Include="Model\TodoList.cs" />
-    <Compile Include="Model\TodoListCollection.cs" />
-    <Compile Include="Model\TodoLink.cs" />
-    <Compile Include="Service\ITodoService.cs" />
-    <Compile Include="Service\TodoService.cs" />
-    <Compile Include="Service\TodoServiceMock.cs" />
-    <Compile Include="View\TodoListCell.cs" />
-    <Compile Include="View\TodoListsPage.cs" />
+    <Compile Include="Views\TodoListsPage.cs" />
+    <Compile Include="Views\TodoListCell.cs" />
+    <Compile Include="Services\ITodoService.cs" />
+    <Compile Include="Services\TodoService.cs" />
+    <Compile Include="Services\TodoServiceMock.cs" />
+    <Compile Include="Models\BaseCollection.cs" />
+    <Compile Include="Models\Todo.cs" />
+    <Compile Include="Models\TodoCollection.cs" />
+    <Compile Include="Models\TodoList.cs" />
+    <Compile Include="Models\TodoListCollection.cs" />
+    <Compile Include="Models\TodoLink.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.2.3.6257\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.2.3.6257\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" />
@@ -92,8 +92,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="View\" />
-    <Folder Include="Service\" />
+    <Folder Include="Views\" />
+    <Folder Include="Services\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 </Project>

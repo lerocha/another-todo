@@ -17,6 +17,10 @@ namespace AnotherTodo
 				RowHeight = 80
 			};
 
+			listView.ItemSelected += async (sender, e) => {
+				await DisplayAlert("Tapped!", e.SelectedItem + " was tapped.", "OK");
+			};
+
 			Content = new StackLayout {
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				Children = { listView }

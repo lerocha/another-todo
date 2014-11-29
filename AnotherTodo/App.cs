@@ -7,7 +7,7 @@ namespace AnotherTodo
 	{
 		public static Page GetMainPage()
 		{	
-			return new TodoListPage();
+			return new TodoListsPage();
 		}
 	}
 }
