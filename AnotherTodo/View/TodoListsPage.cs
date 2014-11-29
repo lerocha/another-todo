@@ -4,12 +4,12 @@ using System.Diagnostics;
 
 namespace AnotherTodo
 {
-	public class TodoListPage : ContentPage
+	public class TodoListsPage : ContentPage
 	{
 		private ListView listView;
 		private ITodoService todoService = new TodoServiceMock();
 
-		public TodoListPage()
+		public TodoListsPage()
 		{
 			Title = "Todo List";
 
