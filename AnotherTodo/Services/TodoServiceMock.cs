@@ -6,10 +6,10 @@ namespace AnotherTodo
 {
 	public class TodoServiceMock : ITodoService
 	{
-		private Dictionary<string, TodoList> todoListDict = new Dictionary<string, TodoList>();
-		private Dictionary<string, Dictionary<string, Todo>> todoDictionaries = new Dictionary<string, Dictionary<string, Todo>>();
+		private static Dictionary<string, TodoList> todoListDict = new Dictionary<string, TodoList>();
+		private static Dictionary<string, Dictionary<string, Todo>> todoDictionaries = new Dictionary<string, Dictionary<string, Todo>>();
 
-		public TodoServiceMock()
+		static TodoServiceMock()
 		{
 			PopulateData();
 		}
@@ -121,7 +121,7 @@ namespace AnotherTodo
 			});
 		}
 
-		private void PopulateData()
+		private static void PopulateData()
 		{
 			var todoList = addTodoList(new TodoList {
 				Id = Guid.NewGuid().ToString(),
@@ -201,7 +201,7 @@ namespace AnotherTodo
 			});
 		}
 
-		private TodoList addTodoList(TodoList todoList)
+		private static TodoList addTodoList(TodoList todoList)
 		{
 			todoList.Id = Guid.NewGuid().ToString();
 			todoListDict[todoList.Id] = todoList;
@@ -209,7 +209,7 @@ namespace AnotherTodo
 			return todoList;
 		}
 
-		private Todo addTodo(Todo todo)
+		private static Todo addTodo(Todo todo)
 		{
 			if (todoDictionaries.ContainsKey(todo.TodoListId)) {
 				todo.Id = Guid.NewGuid().ToString();

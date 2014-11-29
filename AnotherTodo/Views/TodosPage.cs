@@ -4,23 +4,24 @@ using System.Diagnostics;
 
 namespace AnotherTodo
 {
-	public class TodoListsPage : ContentPage
+	public class TodosPage : ContentPage
 	{
 		private ListView listView;
 		private ITodoService todoService = new TodoServiceMock();
+		private string todoListId;
 
-		public TodoListsPage()
+		public TodosPage(TodoList todoList)
 		{
-			Title = "My Lists";
+			this.todoListId = todoList.Id;
+			Title = todoList.Title;
 
 			listView = new ListView {
 				RowHeight = 80
 			};
 
 			listView.ItemSelected += async (sender, e) => {
-				var todoList = (TodoList)e.SelectedItem;
-				var todosPage = new TodosPage(todoList);
-				await Navigation.PushAsync(todosPage);			
+				var todo = (Todo)e.SelectedItem;
+				await DisplayAlert("Tapped!", todo.Title + " was tapped.", "OK");
 			};
 
 			Content = new StackLayout {
@@ -37,9 +38,9 @@ namespace AnotherTodo
 			base.OnAppearing();
 
 			try {
-				var response = await todoService.GetAllTodoListsAsync();
+				var response = await todoService.GetAllTodosAsync(this.todoListId);
 				listView.ItemsSource = response.Items;
-				listView.ItemTemplate = new DataTemplate(typeof(TodoListCell));
+				listView.ItemTemplate = new DataTemplate(typeof(TodoCell));
 			} catch (Exception e) {
 				// TODO: handle exception
 				Debug.WriteLine(e);
