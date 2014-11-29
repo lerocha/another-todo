@@ -123,82 +123,99 @@ namespace AnotherTodo
 
 		private void PopulateData()
 		{
-			var todoList = AddTodoListAsync(new TodoList {
+			var todoList = addTodoList(new TodoList {
 				Id = Guid.NewGuid().ToString(),
 				Title = "Personal",
 				Updated = DateTime.UtcNow,
-			}).Result;
+			});
 
-			AddTodoAsync(new Todo {
+			addTodo(new Todo {
 				Id = Guid.NewGuid().ToString(),
 				TodoListId = todoList.Id,
 				Title = "Personal Task # 1",
 				Updated = DateTime.UtcNow,
-			}, null).Wait();
+			});
 
-			AddTodoAsync(new Todo {
+			addTodo(new Todo {
 				Id = Guid.NewGuid().ToString(),
 				TodoListId = todoList.Id,
 				Title = "Personal Task # 2",
 				Updated = DateTime.UtcNow,
-			}, null).Wait();
+			});
 
-			var todo = AddTodoAsync(new Todo {
+			var todo = addTodo(new Todo {
 				Id = Guid.NewGuid().ToString(),
 				TodoListId = todoList.Id,
 				Title = "Personal Task # 3",
 				Updated = DateTime.UtcNow,
-			}, null).Result;
+			});
 
-			AddTodoAsync(new Todo {
+			addTodo(new Todo {
 				Id = Guid.NewGuid().ToString(),
 				TodoListId = todoList.Id,
 				Title = "Personal Task # 3.1",
 				Updated = DateTime.UtcNow,
 				Parent = todo.Id,
-			}, null).Wait();
+			});
 
-			AddTodoAsync(new Todo {
+			addTodo(new Todo {
 				Id = Guid.NewGuid().ToString(),
 				TodoListId = todoList.Id,
 				Title = "Personal Task # 3.2",
 				Updated = DateTime.UtcNow,
 				Parent = todo.Id,
-			}, null).Wait();
+			});
 
-			AddTodoAsync(new Todo {
+			addTodo(new Todo {
 				Id = Guid.NewGuid().ToString(),
 				TodoListId = todoList.Id,
 				Title = "Personal Task # 4",
 				Updated = DateTime.UtcNow,
-			}, null).Wait();
+			});
 
-			var todoList2 = AddTodoListAsync(new TodoList {
+			var todoList2 = addTodoList(new TodoList {
 				Id = Guid.NewGuid().ToString(),
 				Title = "Business",
 				Updated = DateTime.UtcNow,
-			}).Result;
+			});
 
-			AddTodoAsync(new Todo {
+			addTodo(new Todo {
 				Id = Guid.NewGuid().ToString(),
 				TodoListId = todoList2.Id,
 				Title = "Business Task # 1",
 				Updated = DateTime.UtcNow,
-			}, null).Wait();
+			});
 
-			AddTodoAsync(new Todo {
+			addTodo(new Todo {
 				Id = Guid.NewGuid().ToString(),
 				TodoListId = todoList2.Id,
 				Title = "Business Task # 2",
 				Updated = DateTime.UtcNow,
-			}, null).Wait();
+			});
 
-			AddTodoAsync(new Todo {
+			addTodo(new Todo {
 				Id = Guid.NewGuid().ToString(),
 				TodoListId = todoList2.Id,
 				Title = "Business Task # 3",
 				Updated = DateTime.UtcNow,
-			}, null).Wait();
+			});
+		}
+
+		private TodoList addTodoList(TodoList todoList)
+		{
+			todoList.Id = Guid.NewGuid().ToString();
+			todoListDict[todoList.Id] = todoList;
+			todoDictionaries.Add(todoList.Id, new Dictionary<string, Todo>());
+			return todoList;
+		}
+
+		private Todo addTodo(Todo todo)
+		{
+			if (todoDictionaries.ContainsKey(todo.TodoListId)) {
+				todo.Id = Guid.NewGuid().ToString();
+				todoDictionaries[todo.TodoListId][todo.Id] = todo;
+			}
+			return todo;
 		}
 	}
 }

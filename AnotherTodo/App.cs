@@ -7,13 +7,7 @@ namespace AnotherTodo
 	{
 		public static Page GetMainPage()
 		{	
-			return new ContentPage { 
-				Content = new Label {
-					Text = "Hello, AnotherTodo!",
-					VerticalOptions = LayoutOptions.CenterAndExpand,
-					HorizontalOptions = LayoutOptions.CenterAndExpand,
-				},
-			};
+			return new TodoListPage();
 		}
 	}
 }
