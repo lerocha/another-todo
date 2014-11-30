@@ -1,20 +1,21 @@
 ﻿using System;
 using Xamarin.Forms;
 using System.Diagnostics;
+using Microsoft.Practices.Unity;
+using Unity=Microsoft.Practices.Unity;
 
 namespace AnotherTodo
 {
 	public class TodosPage : ContentPage
 	{
+		public TodoList TodoList { get; set; }
+
 		private ListView listView;
-		private ITodoService todoService = new TodoServiceMock();
-		private string todoListId;
+		private ITodoService todoService;
 
-		public TodosPage(TodoList todoList)
+		public TodosPage([Unity.Dependency] ITodoService todoService)
 		{
-			this.todoListId = todoList.Id;
-			Title = todoList.Title;
-
+			this.todoService = todoService;
 			listView = new ListView {
 				RowHeight = 80
 			};
@@ -38,7 +39,7 @@ namespace AnotherTodo
 			base.OnAppearing();
 
 			try {
-				var response = await todoService.GetAllTodosAsync(this.todoListId);
+				var response = await todoService.GetAllTodosAsync(TodoList.Id);
 				listView.ItemsSource = response.Items;
 				listView.ItemTemplate = new DataTemplate(typeof(TodoCell));
 			} catch (Exception e) {

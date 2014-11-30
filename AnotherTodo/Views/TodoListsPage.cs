@@ -1,16 +1,19 @@
 ﻿using System;
 using Xamarin.Forms;
 using System.Diagnostics;
+using Microsoft.Practices.Unity;
+using Unity=Microsoft.Practices.Unity;
 
 namespace AnotherTodo
 {
 	public class TodoListsPage : ContentPage
 	{
 		private ListView listView;
-		private ITodoService todoService = new TodoServiceMock();
+		private ITodoService todoService;
 
-		public TodoListsPage()
+		public TodoListsPage([Unity.Dependency] ITodoService todoService)
 		{
+			this.todoService = todoService;
 			Title = "My Lists";
 
 			listView = new ListView {
@@ -19,7 +22,9 @@ namespace AnotherTodo
 
 			listView.ItemSelected += async (sender, e) => {
 				var todoList = (TodoList)e.SelectedItem;
-				var todosPage = new TodosPage(todoList);
+				var todosPage = App.Container.Resolve<TodosPage>();
+				todosPage.Title = todoList.Title;
+				todosPage.TodoList = todoList;
 				await Navigation.PushAsync(todosPage);			
 			};
 
