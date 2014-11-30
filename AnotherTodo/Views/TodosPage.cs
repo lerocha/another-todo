@@ -10,8 +10,8 @@ namespace AnotherTodo
 	{
 		public TodoList TodoList { get; set; }
 
-		private ListView listView;
-		private ITodoService todoService;
+		private readonly ListView listView;
+		private readonly ITodoService todoService;
 
 		public TodosPage([Unity.Dependency] ITodoService todoService)
 		{

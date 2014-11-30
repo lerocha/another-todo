@@ -8,8 +8,8 @@ namespace AnotherTodo
 {
 	public class TodoListsPage : ContentPage
 	{
-		private ListView listView;
-		private ITodoService todoService;
+		private readonly ListView listView;
+		private readonly ITodoService todoService;
 
 		public TodoListsPage([Unity.Dependency] ITodoService todoService)
 		{
