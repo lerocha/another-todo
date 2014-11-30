@@ -8,13 +8,15 @@ namespace AnotherTodo
 		public TodoCell()
 		{
 			var titleLabel = new Label {
-				HorizontalOptions = LayoutOptions.FillAndExpand
+				HorizontalOptions = LayoutOptions.FillAndExpand,
+				VerticalOptions = LayoutOptions.CenterAndExpand,
 			};
 			titleLabel.SetBinding(Label.TextProperty, "Title");
 
 			View = new StackLayout {
 				HorizontalOptions = LayoutOptions.StartAndExpand,
 				Orientation = StackOrientation.Vertical,
+				Padding = 12,
 				Children = {
 					titleLabel
 				}

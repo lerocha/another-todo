@@ -8,22 +8,18 @@ namespace AnotherTodo
 		public TodoListCell()
 		{
 			var titleLabel = new Label {
-				HorizontalOptions = LayoutOptions.FillAndExpand
+				HorizontalOptions = LayoutOptions.FillAndExpand,
+				VerticalOptions = LayoutOptions.CenterAndExpand,
 			};
 			titleLabel.SetBinding(Label.TextProperty, "Title");
-
-			// Movie tagline label.
-			var detailLabel = new Label {
-				HorizontalOptions = LayoutOptions.FillAndExpand
-			};
-			detailLabel.SetBinding(Label.TextProperty, "Id");
 
 			// Creates a StackLayout view with the movie and vote average labels.
 			View = new StackLayout {
 				HorizontalOptions = LayoutOptions.StartAndExpand,
 				Orientation = StackOrientation.Vertical,
+				Padding = 12,
 				Children = {
-					titleLabel, detailLabel
+					titleLabel
 				}
 			};
 		}
